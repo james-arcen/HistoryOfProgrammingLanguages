@@ -29,9 +29,12 @@ public class PanelUtils{
         header.setLayout(new BorderLayout());
         header.setOpaque(false);
         //Title Configuration
-        t.setHorizontalAlignment(SwingConstants.CENTER);
+        t.setHorizontalAlignment(SwingConstants.CENTER);// this sets the title on the center of the screen
         t.setOpaque(false);
         header.add(t, BorderLayout.CENTER);
+
+        //Description Configuration
+        dPanel.add(desc, BorderLayout.CENTER);
 
         header.add(closeButton, BorderLayout.EAST);
         
