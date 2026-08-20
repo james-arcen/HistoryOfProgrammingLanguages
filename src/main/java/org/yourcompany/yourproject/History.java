@@ -21,7 +21,7 @@ public class History {
         mainFrame.setSize(new Dimension(1920,1080));
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        mainFrame.add(ButtonUtils.newButton("Fortran", "desc"));
+        mainFrame.add(ButtonUtils.newButton("Fortran", "desc", "/home/jarcenas/Java/Projects/History/src/main/java/org/yourcompany/yourproject/resources/fortran logo.jpeg"));
 
 
         mainFrame.setVisible(true);

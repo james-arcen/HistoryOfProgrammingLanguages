@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,13 +13,15 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 public class PanelUtils{
-    public static JPanel displayPanel(Dimension d, String title, String description){
+    public static JPanel displayPanel(Dimension d, String title, String description, String path){
         JPanel bPanel = new JPanel(); // wrapper to control the size of the display panel
         JPanel dPanel = new JPanel();
         JPanel header = new JPanel();
         JButton closeButton = new JButton();
         JLabel t = new JLabel();
         JTextArea desc = new JTextArea();
+        ImageIcon logo = new ImageIcon(path);
+        
         bPanel.setLayout(new FlowLayout());
 
 
@@ -35,7 +38,6 @@ public class PanelUtils{
 
         //Description Configuration
         dPanel.add(desc, BorderLayout.CENTER);
-
         header.add(closeButton, BorderLayout.EAST);
         
 
