@@ -15,6 +15,9 @@ public class ButtonUtils{
         JButton button = new JButton();
         JPanel wrapper = new JPanel();
         JPanel panel = new PanelUtils().displayPanel(new Dimension(800,600));
+
+
+
         panel.setVisible(false);
         wrapper.setLayout(new FlowLayout());
         wrapper.add(button);
@@ -22,7 +25,13 @@ public class ButtonUtils{
         button.setText(title);
         button.setPreferredSize(new Dimension(100,200));
         
-        button.addActionListener(e -> panel.setVisible(true));
+        button.addActionListener(e -> {
+                if(panel.isVisible() == false){
+                    panel.setVisible(true);
+                }    
+                
+            }
+            );
         wrapper.revalidate();
         wrapper.repaint();
         
