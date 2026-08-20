@@ -11,10 +11,10 @@ import javax.swing.JPanel;
 public class ButtonUtils{
     
 
-    public static JPanel newButton(String title){
+    public static JPanel newButton(String title, String desc){
         JButton button = new JButton();
         JPanel wrapper = new JPanel();
-        JPanel panel = new PanelUtils().displayPanel(new Dimension(800,600));
+        JPanel panel = PanelUtils.displayPanel(new Dimension(800,600), title, desc);
 
 
 
