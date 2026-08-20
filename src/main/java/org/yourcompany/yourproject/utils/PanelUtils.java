@@ -15,6 +15,8 @@ public class PanelUtils{
         dPanel.setPreferredSize(d);
         bPanel.add(dPanel);
 
+        bPanel.revalidate();
+        bPanel.repaint();
         return bPanel;
     }
 
