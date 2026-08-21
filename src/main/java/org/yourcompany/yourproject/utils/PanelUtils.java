@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
 
 public class PanelUtils{
     public static JPanel displayPanel(Dimension d, String title, String description, String path){
@@ -20,10 +22,9 @@ public class PanelUtils{
         JButton closeButton = new JButton();
         JLabel t = new JLabel();
         JTextArea desc = new JTextArea();
-        ImageIcon logo = new ImageIcon(path);
         
         bPanel.setLayout(new FlowLayout());
-
+        //Text Configuration
 
         //Display Panel Configuration
         dPanel.setLayout(new BorderLayout());
@@ -31,10 +32,12 @@ public class PanelUtils{
         dPanel.add(header, BorderLayout.NORTH);
         header.setLayout(new BorderLayout());
         header.setOpaque(false);
+
         //Title Configuration
         t.setHorizontalAlignment(SwingConstants.CENTER);// this sets the title on the center of the screen
         t.setOpaque(false);
         header.add(t, BorderLayout.CENTER);
+        header.add(icon(path), BorderLayout. WEST);
 
         //Description Configuration
         dPanel.add(desc, BorderLayout.CENTER);
@@ -59,6 +62,20 @@ public class PanelUtils{
 
         bPanel.add(dPanel);
         return bPanel;
+    }
+
+    public static JLabel icon(String path){
+        JLabel container = new JLabel();
+        ImageIcon icon = new ImageIcon(path);   
+
+        Image raw = icon.getImage();
+        Image scaled = raw.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+        ImageIcon scaledIcon = new ImageIcon(scaled);
+
+        container.setIcon(scaledIcon);
+
+        return container;
     }
 
 
