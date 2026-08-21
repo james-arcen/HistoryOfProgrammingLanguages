@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -22,7 +23,7 @@ public class PanelUtils{
         JButton closeButton = new JButton();
         JLabel t = new JLabel();
         JTextArea desc = new JTextArea();
-        
+        Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, 24);
         bPanel.setLayout(new FlowLayout());
         //Text Configuration
 
@@ -36,6 +37,7 @@ public class PanelUtils{
         //Title Configuration
         t.setHorizontalAlignment(SwingConstants.CENTER);// this sets the title on the center of the screen
         t.setOpaque(false);
+        t.setFont(textFont);
         header.add(t, BorderLayout.CENTER);
         header.add(icon(path), BorderLayout. WEST);
 
