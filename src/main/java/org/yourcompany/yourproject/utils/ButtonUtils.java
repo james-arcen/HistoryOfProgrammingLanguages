@@ -2,8 +2,8 @@
 
 package org.yourcompany.yourproject.utils;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,29 +11,23 @@ import javax.swing.JPanel;
 public class ButtonUtils{
     
 
-    public static JPanel newButton(String title, String desc, String path){
+    public static JPanel newButton(String title, int index, int x, int y, JPanel mainPanel){
         JButton button = new JButton();
         JPanel wrapper = new JPanel();
-        JPanel panel = PanelUtils.displayPanel(new Dimension(800,600), title, desc, path);
-
-
-
-        panel.setVisible(false);
-        wrapper.setLayout(new FlowLayout());
-        wrapper.add(button);
-        wrapper.add(panel);
+        wrapper.setLayout(new BorderLayout());
+        wrapper.add(button, BorderLayout.CENTER);
         button.setText(title);
         button.setPreferredSize(new Dimension(100,200));
-        
+        wrapper.setBounds(x, y, 100,200);
+
         button.addActionListener(e -> {
-                if(panel.isVisible() == false){
-                    panel.setVisible(true);
-                }    
-                
+                mainPanel.add(InformationUtils.displayInfo(index));
+                mainPanel.revalidate();
+                mainPanel.repaint();
             }
             );
-        wrapper.revalidate();
-        wrapper.repaint();
+        
+        
         
         return wrapper;
     }   

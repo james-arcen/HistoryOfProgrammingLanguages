@@ -25,7 +25,6 @@ public class PanelUtils{
         JTextArea desc = new JTextArea();
         Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, 24);
         bPanel.setLayout(new FlowLayout());
-        //Text Configuration
 
         //Display Panel Configuration
         dPanel.setLayout(new BorderLayout());
