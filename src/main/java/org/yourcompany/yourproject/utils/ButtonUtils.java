@@ -17,9 +17,9 @@ public class ButtonUtils{
         wrapper.setLayout(new BorderLayout());
         wrapper.add(button, BorderLayout.CENTER);
         button.setText(title);
-        button.setPreferredSize(new Dimension(100,200));
-        wrapper.setBounds(x, y, 100,200);
-
+        button.setPreferredSize(new Dimension(100,100));
+        wrapper.setBounds(x, y, 100,100);
+        InformationUtils.mouse(button, wrapper);
         button.addActionListener(e -> {
                 mainPanel.add(InformationUtils.displayInfo(index));
                 mainPanel.revalidate();

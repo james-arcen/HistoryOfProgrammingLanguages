@@ -4,6 +4,7 @@
 
 package org.yourcompany.yourproject;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,9 +21,11 @@ public class History {
         JFrame mainFrame = new JFrame();
         JPanel mainPanel = new JPanel();
         //JFrame
+        mainFrame.setLayout(new GridBagLayout());
         mainFrame.setSize(new Dimension(1920,1080));
         mainFrame.add(mainPanel);
         mainPanel.setLayout(null);
+        mainPanel.setPreferredSize(new Dimension(1920,1080));
         mainPanel.add(ButtonUtils.newButton("Fortran", 1, 200, 300, mainPanel));
             
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
