@@ -6,9 +6,20 @@ import java.awt.Rectangle;
 import javax.swing.JPanel;
 // Call the index value of the item
 public class InformationUtils{
-        public static JPanel displayInfo(int index){
-            Dimension panelSize = new Dimension(800,600);
-            Rectangle bounds = new Rectangle(560, 240, 800, 600);
+        public static JPanel displayInfo(int index, int screenWidth, int screenHeight){
+            //Dynamic size
+            double displayWidth = screenWidth  *.7;
+            double displayHeight = screenHeight * .7;
+
+            //Centering
+            double calculatedX = ((screenWidth - displayWidth) / 2);
+            double calculatedY = ((screenHeight - displayHeight) / 2);
+
+            Dimension panelSize = new Dimension((int)displayWidth,(int)displayHeight);
+            Rectangle bounds = new Rectangle((int)calculatedX, (int)calculatedY, (int)displayWidth, (int)displayHeight);
+
+            
+
             switch (index) {
                 case  1:
                     JPanel panel = PanelUtils.displayPanel(panelSize, "Fortran", "desc", "/home/jarcenas/Java/Projects/History/src/main/java/org/yourcompany/yourproject/resources/fortran logo.jpeg");
@@ -19,7 +30,9 @@ public class InformationUtils{
                     throw new AssertionError();
             }
         }
-        public static void mouse(javax.swing.JButton button, JPanel panel){
+
+
+public static void mouse(javax.swing.JButton button, JPanel panel){
     // 1. Create a final array to hold the anchor points. 
     // We use an array because variables accessed inside an anonymous inner class must be strictly final.
     final int[] anchor = new int[2];
