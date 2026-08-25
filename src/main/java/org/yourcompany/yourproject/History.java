@@ -27,7 +27,7 @@ public class History {
         
         Image tempImage = null;
         try{
-            tempImage = ImageIO.read(new File("/home/jarcenas/Java/Projects/History/src/main/java/org/yourcompany/yourproject/resources/layout.png"));
+            tempImage = ImageIO.read(new File("src/main/java/org/yourcompany/yourproject/resources/layout.png"));
         } catch(IOException e){
             System.out.println("check file path");
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class History {
         mainFrame.add(mainPanel);
         mainPanel.setLayout(null);
         
-        mainPanel.add(ButtonUtils.newButton("Fortran", 1 , 0.046, 0.389, width, height, mainPanel));
+        mainPanel.add(ButtonUtils.newButton("Fortran", 1 , 0.036, 0.067, width, height, mainPanel));
             
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

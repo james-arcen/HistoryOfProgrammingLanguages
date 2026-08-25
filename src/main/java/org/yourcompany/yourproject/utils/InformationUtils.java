@@ -22,7 +22,7 @@ public class InformationUtils{
 
             switch (index) {
                 case  1:
-                    JPanel panel = PanelUtils.displayPanel(panelSize, "Fortran", "desc", "/home/jarcenas/Java/Projects/History/src/main/java/org/yourcompany/yourproject/resources/fortran logo.jpeg");
+                    JPanel panel = PanelUtils.displayPanel(panelSize, "Fortran", "desc", "src/main/java/org/yourcompany/yourproject/resources/fortran logo.jpeg");
                     panel.setBounds(bounds);
                     panel.setVisible(true);
                     return panel;
