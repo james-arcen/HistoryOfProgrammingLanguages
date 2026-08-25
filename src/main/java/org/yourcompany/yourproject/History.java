@@ -23,7 +23,7 @@ public class History {
 
     
     public static void main(String[] args) {
-        JFrame mainFrame = new JFrame();
+        JFrame mainFrame = new JFrame("History of Programming Languages");
         
         Image tempImage = null;
         try{
