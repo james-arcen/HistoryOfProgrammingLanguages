@@ -30,9 +30,9 @@ public class ButtonUtils{
         wrapper.setBounds(calculatedX, calculatedY, buttonWidth, buttonHeight);
 
 
-        InformationUtils.mouse(button, wrapper);
         button.addActionListener(e -> {
                 mainPanel.add(InformationUtils.displayInfo(index, screenWidth, screenHeight), 0); // 0 always makes sure panel appears on top
+                mainPanel.setComponentZOrder(InformationUtils.displayInfo(index, screenWidth, screenHeight), 0);
                 mainPanel.revalidate();
                 mainPanel.repaint();
             }
