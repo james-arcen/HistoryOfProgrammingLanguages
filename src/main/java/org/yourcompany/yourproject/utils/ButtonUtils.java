@@ -31,8 +31,10 @@ public class ButtonUtils{
 
 
         button.addActionListener(e -> {
-                mainPanel.add(InformationUtils.displayInfo(index, screenWidth, screenHeight), 0); // 0 always makes sure panel appears on top
-                mainPanel.setComponentZOrder(InformationUtils.displayInfo(index, screenWidth, screenHeight), 0);
+                JPanel panel = InformationUtils.displayInfo(index, screenWidth, screenHeight);
+                panel.setBounds(0, 0, screenWidth, screenHeight);
+                mainPanel.add(panel, 0); // 0 always makes sure panel appears on top
+                mainPanel.setComponentZOrder(panel, 0);
                 mainPanel.revalidate();
                 mainPanel.repaint();
             }
