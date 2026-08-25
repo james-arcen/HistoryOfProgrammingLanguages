@@ -24,6 +24,7 @@ public class PanelUtils{
         JLabel t = new JLabel();
         JTextArea desc = new JTextArea();
         Font textFont = new Font(Font.SANS_SERIF, Font.BOLD, 24);
+        Font descFont = new Font(Font.SANS_SERIF, Font.PLAIN, 30);
         bPanel.setLayout(new FlowLayout());
 
         //Display Panel Configuration
@@ -41,10 +42,15 @@ public class PanelUtils{
         header.add(icon(path), BorderLayout. WEST);
 
         //Description Configuration
+        desc.setEditable(false);
+        desc.setFocusable(false);
+        desc.setLineWrap(true);
+        desc.setWrapStyleWord(true);
+        desc.setFont(descFont);
+        
         dPanel.add(desc, BorderLayout.CENTER);
         header.add(closeButton, BorderLayout.EAST);
         
-
 
         //Title and Info
         t.setText(title);
@@ -78,7 +84,5 @@ public class PanelUtils{
 
         return container;
     }
-
-
 
 }
