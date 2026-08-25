@@ -4,6 +4,7 @@ package org.yourcompany.yourproject.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -21,14 +22,17 @@ public class ButtonUtils{
 
         wrapper.setLayout(new BorderLayout());
         wrapper.add(button, BorderLayout.CENTER);
+        button.setFont(new java.awt.Font("Arial", Font.PLAIN, 24));
         button.setText(title);
-        button.setPreferredSize(new Dimension(100,100));
-        wrapper.setBounds(calculatedX, calculatedY, 100,100);
+        int buttonWidth = (int)(screenWidth * 0.04895);
+        int buttonHeight = (int)(screenHeight * 0.06130);
+        button.setPreferredSize(new Dimension(buttonWidth, buttonHeight));
+        wrapper.setBounds(calculatedX, calculatedY, buttonWidth, buttonHeight);
 
 
         InformationUtils.mouse(button, wrapper);
         button.addActionListener(e -> {
-                mainPanel.add(InformationUtils.displayInfo(index, screenWidth, screenHeight));
+                mainPanel.add(InformationUtils.displayInfo(index, screenWidth, screenHeight), 0); // 0 always makes sure panel appears on top
                 mainPanel.revalidate();
                 mainPanel.repaint();
             }

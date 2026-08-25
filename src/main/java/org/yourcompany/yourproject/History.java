@@ -4,8 +4,13 @@
 
 package org.yourcompany.yourproject;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -19,7 +24,25 @@ public class History {
     
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame();
-        JPanel mainPanel = new JPanel();
+        
+        Image tempImage = null;
+        try{
+            tempImage = ImageIO.read(new File("/home/jarcenas/Java/Projects/History/src/main/java/org/yourcompany/yourproject/resources/layout.png"));
+        } catch(IOException e){
+            System.out.println("check file path");
+            e.printStackTrace();
+        }
+        final Image backgroundImage = tempImage;
+
+        JPanel mainPanel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (backgroundImage != null) {
+                    g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
+                }
+            }
+        };
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
@@ -29,7 +52,8 @@ public class History {
         mainFrame.setSize(new Dimension(width,height));
         mainFrame.add(mainPanel);
         mainPanel.setLayout(null);
-        mainPanel.add(ButtonUtils.newButton("Fortran", 1 , 0.1, 0.25, width, height, mainPanel));
+        
+        mainPanel.add(ButtonUtils.newButton("Fortran", 1 , 0.046, 0.389, width, height, mainPanel));
             
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -41,16 +65,3 @@ public class History {
 
     }
 }
-
-
-
-/*
-To Do:
-
-Modular Buttons
-
-
-Constraints
-
-1 Panel only
-*/

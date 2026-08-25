@@ -34,38 +34,42 @@ public class InformationUtils{
 
 public static void mouse(javax.swing.JButton button, JPanel panel){
     // 1. Create a final array to hold the anchor points. 
-    // We use an array because variables accessed inside an anonymous inner class must be strictly final.
     final int[] anchor = new int[2];
 
-    // 2. Instantiate the universal MouseAdapter sensor
+    // 2. Interrogate the OS hardware limits strictly for the math calculation
+    final java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+
+    // 3. Instantiate the universal MouseAdapter sensor
     java.awt.event.MouseAdapter telemetryAdapter = new java.awt.event.MouseAdapter() {
 
         @Override
         public void mousePressed(java.awt.event.MouseEvent e) {
-            // 3. Calibrate the initial anchor point the exact moment the user clicks down on the BUTTON
+            // Calibrate the initial anchor point 
             anchor[0] = e.getX();
             anchor[1] = e.getY();
         }
 
         @Override
         public void mouseDragged(java.awt.event.MouseEvent e) {
-            // 4. Calculate the delta (the exact pixel difference) based on the button's internal coordinates
+            // Calculate the delta (the exact pixel difference)
             int deltaX = e.getX() - anchor[0];
             int deltaY = e.getY() - anchor[1];
 
-            // 5. Grab the PANEL's current absolute location on the master canvas
+            // Push the PANEL (wrapper) to its new physical location
             int currentX = panel.getX();
             int currentY = panel.getY();
-
-            // 6. Push the PANEL (wrapper) to its new physical location by applying the delta
             panel.setLocation(currentX + deltaX, currentY + deltaY);
 
-            // 7. Stream the live telemetry coordinates straight to your IDE console
-            System.out.println("Node Coordinates -> X: " + panel.getX() + ", Y: " + panel.getY());
+            // 4. The Proportional Math: Divide the exact pixel coordinate by the total screen dimension
+            double ratioX = (double) panel.getX() / screenSize.width;
+            double ratioY = (double) panel.getY() / screenSize.height;
+
+            // 5. Stream the live decimal ratio straight to your IDE console, formatted to 3 decimal places
+            System.out.println("Decimal Ratio -> X: " + String.format("%.3f", ratioX) + ", Y: " + String.format("%.3f", ratioY));
         }
     };
 
-    // 8. Physically wire the sensor strictly into the BUTTON so it intercepts the Z-axis events
+    // 6. Physically wire the sensor strictly into the BUTTON
     button.addMouseListener(telemetryAdapter);
     button.addMouseMotionListener(telemetryAdapter);
 }
