@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class ButtonUtils{
     
@@ -33,10 +34,15 @@ public class ButtonUtils{
         button.addActionListener(e -> {
                 JPanel panel = InformationUtils.displayInfo(index, screenWidth, screenHeight);
                 panel.setBounds(0, 0, screenWidth, screenHeight);
-                mainPanel.add(panel, 0); // 0 always makes sure panel appears on top
+                
+                //Block mouse events from the buttons
+                panel.addMouseListener(new java.awt.event.MouseAdapter() {});
+                
+                mainPanel.add(panel, 0); 
                 mainPanel.setComponentZOrder(panel, 0);
                 mainPanel.revalidate();
-                mainPanel.repaint();
+                
+                SwingUtilities.getWindowAncestor(mainPanel).repaint();
             }
             );
         
